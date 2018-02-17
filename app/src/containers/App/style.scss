@@ -1,0 +1,26 @@
+@import "../../scss/variables";
+
+:global {
+  @import "~normalize.css";
+  body,
+  #root {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+  }
+
+  #root {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: $screen-md) {
+      flex-direction: row;
+    }
+  }
+}
+
+.appBody {
+  height: 100%;
+  width: 100%;
+}
