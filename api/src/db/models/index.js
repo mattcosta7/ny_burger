@@ -1,32 +1,32 @@
-const Sequelize = require("sequelize");
-const configs = require("../config/config");
+const Sequelize = require('sequelize');
+const dbConfigs = require('../config/config');
+const { NODE_ENV } = require('../../config');
 
-const env = process.env.NODE_ENV || "development";
-const config = configs[env];
+const dbConfig = dbConfigs[NODE_ENV];
 const db = {};
 
+const burger = require('./burger');
+const restaurant = require('./restaurant');
+
+const models = [burger, restaurant];
+
 let sequelize;
-if (process.env.NODE_ENV !== "production") {
-  sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    config
-  );
+if (NODE_ENV !== 'production') {
+  sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, dbConfig);
 } else {
-  sequelize = new Sequelize(process.env.DATABASE_URL, {
-    dialect: process.env.DB_DIALECT,
-    protocol: process.env.DB_DIALECT,
-    logging: true
+  sequelize = new Sequelize(dbConfig.DATABASE_URL, {
+    dialect: dbConfig.DB_DIALECT,
+    protocol: dbConfig.DB_DIALECT,
+    logging: true,
   });
 }
 
-[].forEach(modelMaker => {
+models.forEach((modelMaker) => {
   const model = modelMaker(sequelize, Sequelize);
   db[model.name] = model;
 });
 
-Object.keys(db).forEach(modelName => {
+Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }

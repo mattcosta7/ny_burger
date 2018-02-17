@@ -1,23 +1,22 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
+const config = require('../../config');
 
 module.exports = {
   development: {
-    username: process.env.DB_USER,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
-    dialect: process.env.DB_DIALECT
+    username: config.DB_USER,
+    database: config.DB_NAME,
+    host: config.DB_HOST,
+    dialect: config.DB_DIALECT,
   },
   test: {
-    username: process.env.DB_USER,
+    username: config.DB_USER,
     password: null,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
-    dialect: "sqlite3"
+    database: config.DB_NAME,
+    host: config.DB_HOST,
+    dialect: 'sqlite3',
   },
   production: {
-    use_env_variable: "DATABASE_URL",
-    dialect: process.env.DB_DIALECT
-  }
+    use_env_variable: 'DATABASE_URL',
+    dialect: config.DB_DIALECT,
+    DATABASE_URL: config.DATABASE_URL,
+  },
 };
