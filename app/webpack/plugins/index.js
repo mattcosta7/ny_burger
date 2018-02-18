@@ -1,15 +1,10 @@
 const webpack = require('webpack');
 const { extractPluginMaker } = require('./extract-text-plugin');
 const uglify = require('./uglify');
+const pwaManifest = require('./pwa-manifest');
 const { StatsWriterPlugin } = require('webpack-stats-plugin');
 
-const {
-  FLICKR_API_KEY,
-  FLICKR_API_SECRET,
-  FLICKR_ID,
-  PORT = 3000,
-  NODE_ENV = 'development',
-} = process.env;
+const { PORT, NODE_ENV } = require('../../config');
 
 const pluginSets = {
   client: {
@@ -25,6 +20,7 @@ const pluginSets = {
         'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
         'process.env.PORT': PORT,
       }),
+      pwaManifest,
     ],
     production: [
       new webpack.NamedModulesPlugin(),
@@ -50,6 +46,7 @@ const pluginSets = {
         name: 'manifest',
         minChunks: Infinity,
       }),
+      pwaManifest,
     ],
   },
   server: {
@@ -65,6 +62,7 @@ const pluginSets = {
         'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
         'process.env.PORT': PORT,
       }),
+      pwaManifest,
     ],
     production: [
       new webpack.NamedModulesPlugin(),
@@ -78,6 +76,7 @@ const pluginSets = {
         'process.env.NODE_ENV': JSON.stringify('production'),
         'process.env.PORT': PORT,
       }),
+      pwaManifest,
     ],
   },
 };

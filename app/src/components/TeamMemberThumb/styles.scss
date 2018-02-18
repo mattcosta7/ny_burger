@@ -1,0 +1,59 @@
+@import "../../scss/variables";
+
+.team-member {
+  flex: auto;
+  min-height: 20rem;
+  text-align: center;
+  padding: 0.25rem;
+  width: 20rem;
+
+  .thumb {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 20rem;
+    position: relative;
+    width: 100%;
+  }
+
+  .team-member-description-container {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    @media screen and (hover: hover) {
+      display: none;
+    }
+  }
+
+  &:hover {
+    .team-member-description-container {
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+    }
+  }
+
+  .team-member-description {
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.2), transparent);
+    border-radius: 6rem;
+    color: white;
+    padding: 1rem;
+  }
+
+  .team-member-name {
+    background: black;
+    color: white;
+    margin: {
+      bottom: 0;
+      top: auto;
+    }
+    padding: {
+      bottom: 1rem;
+      top: 1rem;
+    }
+  }
+}

@@ -1,27 +1,19 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import classnames from 'classnames';
-import Style from './styles.scss';
+import { NavLink, withRouter } from 'react-router-dom';
 
 const NavItem = ({ to, children, active }) => (
-  <li className={classnames(Style['nav-item'], active && Style.active)}>
-    <Link to={to}>{children}</Link>
+  <li>
+    <NavLink to={to}>{children}</NavLink>
   </li>
 );
 
-function Navigation({ location }) {
+function Navigation() {
   return (
     <nav>
-      <ul className={Style.nav}>
-        <NavItem to="/" active={location.pathname === '/'}>
-          Home
-        </NavItem>
-        <NavItem to="/code" active={location.pathname === '/code'}>
-          Code
-        </NavItem>
-        <NavItem to="/photos" active={location.pathname.includes('/photos')}>
-          Photos
-        </NavItem>
+      <ul>
+        <NavItem to="/">Home</NavItem>
+        <NavItem to="/burgers">Burgers</NavItem>
+        <NavItem to="/team">Team</NavItem>
       </ul>
     </nav>
   );

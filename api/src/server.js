@@ -8,8 +8,9 @@ const cors = require('cors');
 const { apiOpts } = require('./middleware/cors');
 
 const app = express();
+const httpLogging = morgan('combined', { stream: logger.stream });
 
-app.use(require('morgan')('combined', { stream: logger.stream }));
+app.use(httpLogging);
 
 app.use(compression());
 

@@ -15,22 +15,15 @@ export default [
         }),
       },
       {
-        path: parentRoute => `${parentRoute}/childroute`,
+        path: parentRoute => `${parentRoute}/team`,
         component: generateAsyncRouteComponent({
-          loader: () => Promise.resolve(() => <div>code</div>), // import("./all-todos")
+          loader: () => import('../containers/Team'),
         }),
         routes: [
           {
-            path: parentRoute => `${parentRoute}/`,
-            exact: true,
+            path: parentRoute => `${parentRoute}/:paramName`,
             component: generateAsyncRouteComponent({
-              loader: () => Promise.resolve(() => <div>code</div>), // import("./all-todos")
-            }),
-          },
-          {
-            path: parentRoute => `${parentRoute}/grandchildroute`,
-            component: generateAsyncRouteComponent({
-              loader: () => Promise.resolve(() => <div>code</div>), // import("./all-todos")
+              loader: () => import('../containers/TeamMember'),
             }),
           },
         ],

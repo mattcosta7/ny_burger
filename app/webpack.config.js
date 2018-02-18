@@ -1,7 +1,3 @@
-if (process.env.NODE_ENV !== 'production') {
-  // eslint-disable-next-line
-  require('dotenv').config();
-}
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const rulesMaker = require('./webpack/rules');

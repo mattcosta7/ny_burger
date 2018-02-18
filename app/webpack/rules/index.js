@@ -1,4 +1,5 @@
 const path = require('path');
+const { NODE_ENV, PRODUCTION_ENV } = require('../../config');
 const { extractTextPluginRule } = require('../plugins/extract-text-plugin');
 
 module.exports = ({ server = false }) => [
@@ -19,7 +20,7 @@ module.exports = ({ server = false }) => [
         {
           loader: 'css-loader',
           options: {
-            minimize: process.env.NODE_ENV === 'production',
+            minimize: NODE_ENV === PRODUCTION_ENV,
             importLoaders: 1,
             sourceMap: true,
           },
@@ -44,7 +45,7 @@ module.exports = ({ server = false }) => [
           options: {
             modules: true,
             localIdentName: '[name]_[local]__[hash:base64:5]',
-            minimize: process.env.NODE_ENV === 'production',
+            minimize: NODE_ENV === PRODUCTION_ENV,
             importLoaders: 1,
             sourceMap: true,
           },
@@ -70,7 +71,7 @@ module.exports = ({ server = false }) => [
             sourceMap: true,
             importLoaders: 2,
             localIdentName: '[name]_[local]__[hash:base64:5]',
-            minimize: process.env.NODE_ENV === 'production',
+            minimize: NODE_ENV === PRODUCTION_ENV,
           },
         },
         {
@@ -85,7 +86,8 @@ module.exports = ({ server = false }) => [
     }),
   },
   {
-    test: /\.(png|jpg|gif)$/,
+    test: /\.(png|jpg|gif|svg)$/,
+    exclude: /favicon/,
     use: [
       {
         loader: 'url-loader',
@@ -97,7 +99,43 @@ module.exports = ({ server = false }) => [
       {
         loader: 'image-webpack-loader',
         options: {
-          bypassOnDebug: process.env.NODE_ENV !== 'production',
+          bypassOnDebug: NODE_ENV !== PRODUCTION_ENV,
+          mozjpeg: {
+            progressive: true,
+            quality: 65,
+          },
+          optipng: {
+            enabled: true,
+          },
+          pngquant: {
+            quality: '65-90',
+            speed: 4,
+          },
+          gifsicle: {
+            interlaced: false,
+          },
+          // the webp option will enable WEBP
+          webp: {
+            quality: 75,
+          },
+        },
+      },
+    ],
+  },
+  {
+    test: /\.(png|jpg|gif|svg)$/,
+    include: /favicon/,
+    use: [
+      {
+        loader: 'file-loader',
+        options: {
+          name: '[name].[sha512:hash:base64:7].[ext]',
+        },
+      },
+      {
+        loader: 'image-webpack-loader',
+        options: {
+          bypassOnDebug: NODE_ENV !== PRODUCTION_ENV,
           mozjpeg: {
             progressive: true,
             quality: 65,
@@ -122,10 +160,22 @@ module.exports = ({ server = false }) => [
   },
   {
     test: /\.ico$/,
-    loader: 'file-loader',
-    query: {
-      limit: 0,
-      name: '[name].[ext]',
+    use: {
+      loader: 'file-loader',
+      query: {
+        limit: 0,
+        name: '[name].[sha512:hash:base64:7].[ext]',
+      },
+    },
+  },
+  {
+    test: /\.(xml$|webmanifest$)/,
+    use: {
+      loader: 'file-loader',
+      query: {
+        limit: 0,
+        name: '[name].[sha512:hash:base64:7].[ext]',
+      },
     },
   },
 ];

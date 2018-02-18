@@ -1,0 +1,15 @@
+.team-member-container {
+  height: 50%;
+  .team-member {
+    display: flex;
+    height: 100%;
+    img {
+      height: auto;
+      width: 50%;
+      object-fit: cover;
+    }
+    &.left {
+      flex-direction: row-reverse;
+    }
+  }
+}

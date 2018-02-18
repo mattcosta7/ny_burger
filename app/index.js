@@ -1,10 +1,11 @@
 const express = require('express');
 const http = require('http');
+const { NODE_ENV, PORT, PRODUCTION_ENV } = require('./config');
 
 const app = express();
 const server = http.createServer(app);
 
-if (process.env.NODE_ENV !== 'production') {
+if (NODE_ENV !== PRODUCTION_ENV) {
   const webpack = require('webpack');
   const webpackDevMiddleware = require('webpack-dev-middleware');
   const webpackHotMiddleware = require('webpack-hot-middleware');
@@ -42,7 +43,5 @@ if (process.env.NODE_ENV !== 'production') {
 
   app.use(serverRenderer);
 }
-
-const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => `listening on port: ${PORT}`);

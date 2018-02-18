@@ -2,8 +2,10 @@
 
 :global {
   @import "~normalize.css";
-  body,
-  #root {
+  @import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i");
+
+  body {
+    font-family: "Lato", sans-serif;
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -11,16 +13,16 @@
   }
 
   #root {
-    display: flex;
-    flex-direction: column;
-
-    @media screen and (min-width: $screen-md) {
-      flex-direction: row;
-    }
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
   }
 }
 
 .appBody {
   height: 100%;
+  margin: 0;
+  padding: 0;
   width: 100%;
 }
