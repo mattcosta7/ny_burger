@@ -1,10 +1,15 @@
+@import "../../scss/variables";
+
 .team-member-container {
-  height: 50%;
   .team-member {
     display: flex;
-    height: 100%;
+    height: 50%;
+    @media screen and (min-width: map-get($screen-sizes, md)) {
+      height: 100%;
+    }
+
     img {
-      height: auto;
+      height: inherit;
       width: 50%;
       object-fit: cover;
     }

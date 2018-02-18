@@ -12,12 +12,14 @@ import Styles from './style.scss';
 class App extends React.Component {
   render() {
     return (
-      <React.Fragment>
+      <div className={Styles['app-body-container']}>
         <Navigation />
         {/* <Header /> */}
-        <section className={Styles.appBody}>{renderRoutes(this.props.route.routes)}</section>
-        <footer />
-      </React.Fragment>
+        <div>
+          <section className={Styles['app-body']}>{renderRoutes(this.props.route.routes)}</section>
+          <footer />
+        </div>
+      </div>
     );
   }
 }

@@ -1,5 +1,8 @@
 const db = require('../db');
+const repl = require('repl');
 
-module.exports = {
-  db,
-};
+const replServer = repl.start({
+  prompt: 'my-app > ',
+});
+
+replServer.context.db = db;

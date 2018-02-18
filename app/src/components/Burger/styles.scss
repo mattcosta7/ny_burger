@@ -1,0 +1,34 @@
+@import "../../scss/variables";
+.burger-container {
+  .burger {
+    display: flex;
+    flex-direction: column;
+  }
+  .thumbnail {
+    width: 100%;
+  }
+
+  @media screen and (min-width: map-get($screen-sizes, md)) {
+    .burger {
+      flex-direction: row;
+
+      .thumbnail {
+        height: 50%;
+        width: 50%;
+      }
+    }
+    &:nth-of-type(even) {
+      .burger {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  .description {
+    align-self: center;
+    padding: 0.5rem;
+    @media screen and (min-width: map-get($screen-sizes, lg)) {
+      padding: 2rem;
+    }
+  }
+}

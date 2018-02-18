@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) =>
-    queryInterface.createTable('Burgers', {
+    queryInterface.createTable('Restaurants', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,21 +10,26 @@ module.exports = {
       name: {
         type: Sequelize.STRING,
       },
-      meatType: {
-        type: Sequelize.STRING,
-      },
-      bunType: {
-        type: Sequelize.STRING,
-      },
       description: {
         type: Sequelize.TEXT,
       },
-      restaurantId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Restaurants',
-          key: 'id',
-        },
+      address1: {
+        type: Sequelize.STRING,
+      },
+      address2: {
+        type: Sequelize.STRING,
+      },
+      city: {
+        type: Sequelize.STRING,
+      },
+      country: {
+        type: Sequelize.STRING,
+      },
+      postalCode: {
+        type: Sequelize.STRING,
+      },
+      geography: {
+        type: Sequelize.GEOGRAPHY,
       },
       createdAt: {
         allowNull: false,
@@ -35,5 +40,5 @@ module.exports = {
         type: Sequelize.DATE,
       },
     }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('Burgers'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('Restaurants'),
 };

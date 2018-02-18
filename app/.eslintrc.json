@@ -23,7 +23,8 @@
         "objects": "always-multiline"
       }
     ],
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "import/prefer-default-export": 0
   },
   "globals": {
     "window": true

@@ -1,9 +1,17 @@
 const express = require('express');
 const http = require('http');
+const spdy = require('spdy');
+const fs = require('fs');
 const { NODE_ENV, PORT, PRODUCTION_ENV } = require('./config');
 
 const app = express();
-const server = http.createServer(app);
+const server = spdy.createServer(
+  {
+    key: fs.readFileSync('./localhost.key'),
+    cert: fs.readFileSync('./localhost.crt'),
+  },
+  app
+);
 
 if (NODE_ENV !== PRODUCTION_ENV) {
   const webpack = require('webpack');
@@ -43,5 +51,16 @@ if (NODE_ENV !== PRODUCTION_ENV) {
 
   app.use(serverRenderer);
 }
+
+http
+  .createServer((req, res) => {
+    res.writeHead(301, {
+      Location: `https://${req.headers.host.replace(8080, PORT)}${req.url}`,
+    });
+    console.log('http request, will go to >> ');
+    console.log(`https://${req.headers.host.replace(8080, PORT)}${req.url}`);
+    res.end();
+  })
+  .listen(8080);
 
 server.listen(PORT, () => `listening on port: ${PORT}`);

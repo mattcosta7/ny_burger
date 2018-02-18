@@ -7,8 +7,11 @@ const db = {};
 
 const burger = require('./burger');
 const restaurant = require('./restaurant');
+const modelimages = require('./modelimages');
+const teammembers = require('./teammembers');
+const images = require('./images');
 
-const models = [burger, restaurant];
+const models = [burger, restaurant, modelimages, teammembers, images];
 
 let sequelize;
 if (NODE_ENV !== 'production') {

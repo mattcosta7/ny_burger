@@ -1,14 +1,23 @@
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('Restaurants', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('ModelImages', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
-    name: {
+    modelName: {
       type: Sequelize.STRING,
+    },
+    modelId: {
+      type: Sequelize.INTEGER,
+    },
+    createdAt: {
+      type: Sequelize.DATE,
+    },
+    updatedAt: {
+      type: Sequelize.DATE,
     },
     createdAt: {
       allowNull: false,
@@ -19,5 +28,5 @@ module.exports = {
       type: Sequelize.DATE,
     },
   }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('Restaurants'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('ModelImages'),
 };

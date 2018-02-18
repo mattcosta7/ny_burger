@@ -24,7 +24,15 @@
   }
 }
 
-.appBody {
+.app-body-container {
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: map-get($screen-sizes, md)) {
+    flex-direction: row;
+  }
+}
+
+.app-body {
   height: 100%;
   margin: 0;
   padding: 0;

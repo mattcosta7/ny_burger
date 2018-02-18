@@ -1,30 +1,26 @@
+const { IMAGES_SIZES } = require('../../config');
+
 module.exports = {
   up: (queryInterface, Sequelize) =>
-    queryInterface.createTable('Burgers', {
+    queryInterface.createTable('Images', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: {
-        type: Sequelize.STRING,
-      },
-      meatType: {
-        type: Sequelize.STRING,
-      },
-      bunType: {
-        type: Sequelize.STRING,
-      },
-      description: {
-        type: Sequelize.TEXT,
-      },
-      restaurantId: {
+      modelImagesId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Restaurants',
+          model: 'ModelImages',
           key: 'id',
         },
+      },
+      url: {
+        type: Sequelize.STRING,
+      },
+      size: {
+        type: Sequelize.ENUM(Object.keys(IMAGES_SIZES)),
       },
       createdAt: {
         allowNull: false,
@@ -35,5 +31,5 @@ module.exports = {
         type: Sequelize.DATE,
       },
     }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('Burgers'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('Images'),
 };

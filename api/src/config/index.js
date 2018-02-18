@@ -9,6 +9,14 @@ const {
 const PRODUCTION_ENV = 'production';
 const DEVELOPMENT_ENV = 'development';
 
+const IMAGES_SIZES = {
+  THUMB: 'THUMB',
+  SMALL: 'SMALL',
+  MEDIUM: 'MEDIUM',
+  LARGE: 'LARGE',
+  X_LARGE: 'X_LARGE',
+};
+
 module.exports = {
   PORT,
   NODE_ENV,
@@ -18,4 +26,5 @@ module.exports = {
   DB_DIALECT,
   PRODUCTION_ENV,
   DEVELOPMENT_ENV: 'development',
+  IMAGES_SIZES,
 };

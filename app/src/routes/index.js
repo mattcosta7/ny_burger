@@ -15,6 +15,28 @@ export default [
         }),
       },
       {
+        path: parentRoute => `${parentRoute}/burgers`,
+        component: generateAsyncRouteComponent({
+          loader: () => import('../containers/Burgers'),
+        }),
+        routes: [
+          {
+            path: parentRoute => `${parentRoute}/`,
+            exact: true,
+            component: generateAsyncRouteComponent({
+              loader: () => import('../components/Burgers'),
+            }),
+          },
+          {
+            path: parentRoute => `${parentRoute}/:burger_id`,
+            exact: true,
+            component: generateAsyncRouteComponent({
+              loader: () => import('../containers/Burger'),
+            }),
+          },
+        ],
+      },
+      {
         path: parentRoute => `${parentRoute}/team`,
         component: generateAsyncRouteComponent({
           loader: () => import('../containers/Team'),
