@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = new WebpackPwaManifest({
   name: 'New York Burger Blog',
   short_name: 'NY Burger',
-  start_url: 'http://localhost:3001',
+  start_url: './',
   description: 'The New York Burger Blog',
   background_color: '#ffffff',
   display: 'standalone',

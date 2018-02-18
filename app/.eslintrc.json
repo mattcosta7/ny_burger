@@ -22,7 +22,8 @@
         "arrays": "always-multiline",
         "objects": "always-multiline"
       }
-    ]
+    ],
+    "no-param-reassign": "off"
   },
   "globals": {
     "window": true

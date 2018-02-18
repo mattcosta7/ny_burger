@@ -37,8 +37,8 @@ class Team extends React.Component {
     );
   }
 }
-const mapStateToProps = state => ({
-  teamMembers: state.team.data,
+const mapStateToProps = (state, props) => ({
+  teamMembers: state.team.data.filter(teamMember => !props.location.pathname.includes(teamMember.paramName)),
   isLoading: state.team.isLoading,
 });
 const mapDispatchToProps = {

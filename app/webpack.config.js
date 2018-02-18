@@ -16,7 +16,7 @@ const clientConfig = {
     bundle: [
       'babel-polyfill',
       process.env.NODE_ENV !== 'production' &&
-        `webpack-hot-middleware/client?name=client&&path=http://localhost:${
+        `webpack-hot-middleware/client?name=client&&path=https://localhost:${
           process.env.PORT
         }/__webpack_hmr`,
       './src/entry/client',

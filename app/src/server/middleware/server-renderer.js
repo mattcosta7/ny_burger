@@ -12,7 +12,7 @@ export default stats => (req, res, next) => {
   try {
     const { publicPath, assetsByChunkName, assets } = stats.clientStats;
     const { bundle, vendor, manifest } = assetsByChunkName;
-    const pwaManifest = assets.find(asset => asset.name.match(/manifest/));
+    const pwaManifest = assets.find(asset => asset.name.match(/^manifest/) && asset.name.match(/\.json$/));
 
     const tags = [manifest, vendor, bundle].reduce(
       (acc, bundleType) => {

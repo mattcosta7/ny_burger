@@ -6,6 +6,7 @@ import { renderRoutes } from 'react-router-config';
 import configureStore from '../store/configureStore';
 import routes from '../routes';
 import { convertCustomRouteConfig, ensureReady } from '../helpers/rrv4Helpers';
+import * as serviceWorker from '../serviceWorker';
 
 const routeConfig = convertCustomRouteConfig(routes);
 
@@ -23,3 +24,5 @@ ensureReady(routeConfig).then(() => {
 if (module.hot) {
   module.hot.accept();
 }
+
+serviceWorker.register();
