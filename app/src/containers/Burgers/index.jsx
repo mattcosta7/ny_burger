@@ -10,9 +10,12 @@ class Burgers extends React.Component {
     this.handleNextPageClick = this.handleNextPageClick.bind(this);
   }
   componentDidMount() {
-    if (!this.props.burgers || !this.props.burgers.length) this.props.getBurgerDataIG();
+    if (!this.props.burgers || !this.props.burgers.length || this.props.burgers.length < 2) {
+      this.props.getBurgerDataIG();
+    }
   }
-  handleNextPageClick() {
+  handleNextPageClick(e) {
+    e.preventDefault();
     if (this.props.cursor) {
       this.props.getBurgerDataIG({ cursor: this.props.cursor });
     }
@@ -23,7 +26,11 @@ class Burgers extends React.Component {
       <div>
         <h1> Burger Feed </h1>
         {renderRoutes(this.props.route.routes, { burgers: this.props.burgers })}
-        {this.props.cursor && <button onClick={this.handleNextPageClick}>View Older</button>}
+        {this.props.cursor && (
+          <button type="button" onClick={this.handleNextPageClick}>
+            View Older
+          </button>
+        )}
       </div>
     );
   }

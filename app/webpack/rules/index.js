@@ -5,7 +5,7 @@ const { extractTextPluginRule } = require('../plugins/extract-text-plugin');
 module.exports = ({ server = false }) => [
   {
     loader: 'babel-loader',
-    exclude: [/node_modules/],
+    exclude: [/node_modules/, /\.html$/],
     include: [path.resolve('./src')],
     options: {
       plugins: [server ? 'dynamic-import-node' : 'dynamic-import-webpack'],
@@ -93,7 +93,7 @@ module.exports = ({ server = false }) => [
         loader: 'url-loader',
         options: {
           limit: 8192,
-          name: '[name].[sha512:hash:base64:7].[ext]',
+          name: 'assets/[name].[sha512:hash:base64:7].[ext]',
         },
       },
       {
@@ -129,7 +129,7 @@ module.exports = ({ server = false }) => [
       {
         loader: 'file-loader',
         options: {
-          name: '[name].[sha512:hash:base64:7].[ext]',
+          name: 'assets/[name].[sha512:hash:base64:7].[ext]',
         },
       },
       {
@@ -164,7 +164,7 @@ module.exports = ({ server = false }) => [
       loader: 'file-loader',
       query: {
         limit: 0,
-        name: '[name].[sha512:hash:base64:7].[ext]',
+        name: 'assets/[name].[sha512:hash:base64:7].[ext]',
       },
     },
   },
@@ -174,8 +174,14 @@ module.exports = ({ server = false }) => [
       loader: 'file-loader',
       query: {
         limit: 0,
-        name: '[name].[sha512:hash:base64:7].[ext]',
+        name: 'assets/[name].[sha512:hash:base64:7].[ext]',
       },
     },
   },
+  // {
+  //   test: /\.html$/,
+  //   use: {
+  //     loader: 'html-loader',
+  //   },
+  // },
 ];

@@ -1,5 +1,6 @@
 const express = require('express');
 const http = require('http');
+const path = require('path');
 const spdy = require('spdy');
 const fs = require('fs');
 const { NODE_ENV, PORT, PRODUCTION_ENV } = require('./config');
@@ -32,7 +33,6 @@ if (NODE_ENV !== PRODUCTION_ENV) {
     chunkName: 'server',
   }));
 } else {
-  const path = require('path');
   const CLIENT_ASSETS_DIR = path.join(__dirname, './dist');
   const CLIENT_STATS_PATH = path.join(CLIENT_ASSETS_DIR, 'stats.json');
   const SERVER_RENDERER_PATH = path.join(__dirname, './dist/server');
@@ -47,6 +47,8 @@ if (NODE_ENV !== PRODUCTION_ENV) {
   });
 
   app.use(compression());
+  app.set('views', path.join(__dirname, 'dist'));
+  app.set('view engine', 'ejs');
   app.use('/assets', express.static(path.resolve(path.join(__dirname, 'dist'))));
 
   app.use(serverRenderer);
@@ -57,8 +59,6 @@ http
     res.writeHead(301, {
       Location: `https://${req.headers.host.replace(8080, PORT)}${req.url}`,
     });
-    console.log('http request, will go to >> ');
-    console.log(`https://${req.headers.host.replace(8080, PORT)}${req.url}`);
     res.end();
   })
   .listen(8080);

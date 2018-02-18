@@ -1,4 +1,3 @@
-import React from 'react';
 import App from '../containers/App';
 import { generateAsyncRouteComponent } from '../helpers/rrv4Helpers';
 
@@ -11,7 +10,7 @@ export default [
         path: parentRoute => `${parentRoute}/`,
         exact: true,
         component: generateAsyncRouteComponent({
-          loader: () => Promise.resolve(() => <div>parent</div>), // import("./all-todos")
+          loader: () => import('../containers/Home/'),
         }),
       },
       {

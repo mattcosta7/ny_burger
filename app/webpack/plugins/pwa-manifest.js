@@ -2,17 +2,16 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 
 module.exports = new WebpackPwaManifest({
-  name: 'New York Burger Blog',
-  short_name: 'NY Burger',
-  start_url: './',
-  description: 'The New York Burger Blog',
+  filename: 'manifest.json',
+  name: 'My Progressive Web App',
+  short_name: 'MyPWA',
+  description: 'My awesome Progressive Web App!',
   background_color: '#ffffff',
-  display: 'standalone',
-  theme_color: '#f0f0f0',
   icons: [
     {
-      src: path.resolve('src/assets/favicon/android-chrome-144x144.png'),
+      src: path.resolve('./src/assets/favicon/android-chrome-144x144.png'),
       sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
+      destination: path.join('assets'),
     },
     // {
     //   src: path.resolve('src/assets/large-icon.png'),

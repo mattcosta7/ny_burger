@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en" data-framework="react">
+
+<head>
+  {{helmetAttributes}}
+  <script id="props" data-props="{{props}}"></script>
+</head>
+
+<body>
+  <div id="root">{{result}}</div>
+  <%=htmlWebpackPlugin.files.webpackManifest%>
+    {{helmetScripts}}
+</body>
+
+</html>

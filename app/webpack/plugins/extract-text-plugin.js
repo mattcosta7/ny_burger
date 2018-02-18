@@ -2,7 +2,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const extractPluginMaker = ({ disable = false, production = false } = {}) =>
   new ExtractTextPlugin({
-    filename: production ? 'styles.[contentHash].css' : 'styles.css',
+    filename: production ? 'styles/styles.[contentHash].css' : 'styles/styles.css',
     allChunks: true,
     disable,
   });

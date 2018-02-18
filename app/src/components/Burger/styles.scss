@@ -1,5 +1,6 @@
 @import "../../scss/variables";
 .burger-container {
+  list-style: none;
   .burger {
     display: flex;
     flex-direction: column;

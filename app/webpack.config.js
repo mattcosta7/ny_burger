@@ -24,8 +24,10 @@ const clientConfig = {
   },
   output: {
     path: outputPath,
-    filename: process.env.NODE_ENV === 'production' ? '[name].[chunkHash].js' : '[name].js',
+    filename:
+      process.env.NODE_ENV === 'production' ? 'scripts/[name].[chunkHash].js' : 'scripts/[name].js',
     publicPath,
+    sourceMapFilename: 'sourceMaps/[file].map',
   },
   devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
   module: {
@@ -45,6 +47,7 @@ const serverConfig = {
     filename: '[name].js',
     libraryTarget: 'commonjs2',
     publicPath,
+    sourceMapFilename: 'sourceMaps/[file].map',
   },
   devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
   module: {

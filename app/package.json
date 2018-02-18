@@ -43,10 +43,14 @@
     "flickr-sdk": "^3.6.0",
     "flickrapi": "^0.6.0",
     "helmet-webpack-plugin": "^0.0.3",
+    "html-loader": "^0.5.5",
+    "html-webpack-harddisk-plugin": "^0.1.0",
     "html-webpack-plugin": "^2.30.1",
     "image-webpack-loader": "^4.1.0",
+    "inline-manifest-webpack-plugin": "^3.0.1",
     "isomorphic-fetch": "^2.2.1",
     "mime": "^2.0.3",
+    "morgan": "^1.9.0",
     "node-sass": "^4.7.2",
     "normalize.css": "^8.0.0",
     "postcss-loader": "^2.1.0",
@@ -74,8 +78,10 @@
     "webpack-dev-middleware": "^2.0.5",
     "webpack-hot-middleware": "^2.21.0",
     "webpack-hot-server-middleware": "^0.4.0",
+    "webpack-manifest-plugin": "^2.0.0-rc.1",
     "webpack-node-externals": "^1.6.0",
     "webpack-pwa-manifest": "^3.5.0",
-    "webpack-stats-plugin": "^0.1.5"
+    "webpack-stats-plugin": "^0.1.5",
+    "winston": "^2.4.0"
   }
 }

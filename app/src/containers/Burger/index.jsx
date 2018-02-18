@@ -10,7 +10,6 @@ class Burger extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(state, props);
   const burger = state.burger.data.find(burg => burg.id === props.match.params.burger_id);
   return {
     burger,
