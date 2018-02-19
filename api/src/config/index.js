@@ -3,7 +3,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const {
-  PORT, NODE_ENV, DB_USER, DB_NAME, DB_HOST, DB_DIALECT,
+  PORT, NODE_ENV, DB_USER, DB_NAME, DB_HOST, DB_DIALECT, DATABASE_URL
 } = process.env;
 
 const PRODUCTION_ENV = 'production';
@@ -27,4 +27,5 @@ module.exports = {
   PRODUCTION_ENV,
   DEVELOPMENT_ENV: 'development',
   IMAGES_SIZES,
+  DATABASE_URL,
 };
