@@ -34,7 +34,6 @@ class App extends React.Component {
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="msapplication-config" content={`"${msConfig}"`} />
           <meta name="theme-color" content="#ffffff" />
-          <base target="_blank" href="//localhost:3001" />
         </Helmet>
         <Navigation />
         <div>
