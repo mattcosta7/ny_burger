@@ -1,19 +1,17 @@
 const express = require('express');
 const http = require('http');
 const path = require('path');
-const spdy = require('spdy');
-const fs = require('fs');
+// const spdy = require('spdy');
 const { NODE_ENV, PORT, PRODUCTION_ENV } = require('./config');
+const morgan = require('morgan');
+const logger = require('./src/lib/logger');
+
+const httpLogging = morgan('combined', { stream: logger.stream });
 
 const app = express();
-const server = spdy.createServer(
-  {
-    key: fs.readFileSync('./localhost.key'),
-    cert: fs.readFileSync('./localhost.crt'),
-  },
-  app
-);
+const server = http.createServer(app);
 
+app.use(httpLogging);
 if (NODE_ENV !== PRODUCTION_ENV) {
   const webpack = require('webpack');
   const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -49,18 +47,14 @@ if (NODE_ENV !== PRODUCTION_ENV) {
   app.use(compression());
   app.set('views', path.join(__dirname, 'dist'));
   app.set('view engine', 'ejs');
-  app.use('/assets', express.static(path.resolve(path.join(__dirname, 'dist'))));
+  app.use('/public', express.static(path.resolve(path.join(__dirname, 'dist'))));
 
   app.use(serverRenderer);
 }
 
-http
-  .createServer((req, res) => {
-    res.writeHead(301, {
-      Location: `https://${req.headers.host.replace(8080, PORT)}${req.url}`,
-    });
-    res.end();
-  })
-  .listen(8080);
+app.use((req, res, next) => {
+  logger.error('404 page requested');
+  res.status(404).send('This page does not exist!');
+});
 
 server.listen(PORT, () => `listening on port: ${PORT}`);

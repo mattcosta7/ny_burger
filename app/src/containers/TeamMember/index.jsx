@@ -10,7 +10,7 @@ class TeamMember extends React.Component {
     return (
       <div className={Styles['team-member-container']}>
         <Helmet>
-          <title>{`New York Burger Blog | Team | ${this.props.name}`}</title>
+          <title>{`Team | ${this.props.firstName} ${this.props.lastName}`}</title>
         </Helmet>
         <div
           className={classnames(

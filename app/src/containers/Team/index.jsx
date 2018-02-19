@@ -18,7 +18,7 @@ class Team extends React.Component {
     return (
       <main>
         <Helmet>
-          <title>New York Burger Blog | Team</title>
+          <title>Team</title>
         </Helmet>
         {renderRoutes(this.props.route.routes, { teamMembers: this.props.teamMembers })}
         <ul className={Styles['team-members-list']}>

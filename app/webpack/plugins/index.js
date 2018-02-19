@@ -8,6 +8,7 @@ const { PORT, NODE_ENV } = require('../../config');
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 const pluginSets = {
   client: {
@@ -27,6 +28,14 @@ const pluginSets = {
       new HtmlWebpackHarddiskPlugin(),
       pwaManifest,
       new InlineManifestWebpackPlugin(),
+      new SWPrecacheWebpackPlugin({
+        cacheId: 'ny_burger_blog',
+        dontCacheBustUrlsMatching: /\.\w{8}\./,
+        filename: 'service-worker.js',
+        minify: true,
+        navigateFallback: '/index.html',
+        staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/],
+      }),
     ],
     production: [
       new webpack.NamedModulesPlugin(),
@@ -56,6 +65,14 @@ const pluginSets = {
       new HtmlWebpackHarddiskPlugin(),
       pwaManifest,
       new InlineManifestWebpackPlugin(),
+      new SWPrecacheWebpackPlugin({
+        cacheId: 'ny_burger_blog',
+        dontCacheBustUrlsMatching: /\.\w{8}\./,
+        filename: 'service-worker.js',
+        minify: true,
+        navigateFallback: '/index.html',
+        staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/],
+      }),
     ],
   },
   server: {

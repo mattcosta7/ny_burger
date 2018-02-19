@@ -5,7 +5,7 @@ const rulesMaker = require('./webpack/rules');
 const makePluginSet = require('./webpack/plugins');
 
 const outputPath = path.resolve('./dist');
-const publicPath = '/assets/';
+const publicPath = '/public/';
 const resolve = {
   extensions: ['.js', '.jsx'],
 };
@@ -16,7 +16,7 @@ const clientConfig = {
     bundle: [
       'babel-polyfill',
       process.env.NODE_ENV !== 'production' &&
-        `webpack-hot-middleware/client?name=client&&path=https://localhost:${
+        `webpack-hot-middleware/client?name=client&&path=http://localhost:${
           process.env.PORT
         }/__webpack_hmr`,
       './src/entry/client',

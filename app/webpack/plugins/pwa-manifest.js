@@ -7,6 +7,7 @@ module.exports = new WebpackPwaManifest({
   short_name: 'MyPWA',
   description: 'My awesome Progressive Web App!',
   background_color: '#ffffff',
+  start_url: '/',
   icons: [
     {
       src: path.resolve('./src/assets/favicon/android-chrome-144x144.png'),

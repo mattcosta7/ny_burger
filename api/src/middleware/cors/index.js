@@ -1,6 +1,11 @@
 const cors = require('cors');
 
-const apiWhitelist = ['https://localhost:3001', 'https://localhost:3000'];
+const apiWhitelist = [
+  'https://localhost:3001',
+  'https://localhost:3000',
+  'http://localhost:3001',
+  'http://localhost:3000',
+];
 
 const apiOpts = {
   origin: (origin, callback) => {

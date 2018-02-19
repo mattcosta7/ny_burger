@@ -71,6 +71,7 @@
     "sass-loader": "^6.0.6",
     "spdy": "^3.4.7",
     "style-loader": "^0.20.2",
+    "sw-precache-webpack-plugin": "^0.11.4",
     "uglifyjs-webpack-plugin": "^1.2.0",
     "url-loader": "^0.6.2",
     "web-app-manifest-loader": "^0.1.1",
@@ -82,6 +83,7 @@
     "webpack-node-externals": "^1.6.0",
     "webpack-pwa-manifest": "^3.5.0",
     "webpack-stats-plugin": "^0.1.5",
-    "winston": "^2.4.0"
+    "winston": "^2.4.0",
+    "winston-daily-rotate-file": "^1.7.2"
   }
 }
