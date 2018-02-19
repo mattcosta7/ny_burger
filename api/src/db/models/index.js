@@ -20,7 +20,6 @@ if (NODE_ENV !== 'production') {
   sequelize = new Sequelize(dbConfig.DATABASE_URL, {
     dialect: dbConfig.DB_DIALECT,
     protocol: dbConfig.DB_DIALECT,
-    logging: true,
   });
 }
 
