@@ -35,13 +35,15 @@ const ConsoleLogger = new winston.transports.Console({
 //   json: true,
 // });
 
+const transports = [ConsoleLogger];
+
+if (NODE_ENV === PRODUCTION_ENV) {
+  transports.push(FileLogger);
+}
+
 const logger = new winston.Logger({
   transports: [ConsoleLogger],
 });
-
-if (NODE_ENV === PRODUCTION_ENV) {
-  logger.transports.push(FileLogger);
-}
 
 logger.stream = {
   write: (message, encoding) => {
