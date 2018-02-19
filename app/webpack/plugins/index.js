@@ -4,7 +4,7 @@ const uglify = require('./uglify');
 const { StatsWriterPlugin } = require('webpack-stats-plugin');
 const pwaManifest = require('./pwa-manifest');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const { PORT, NODE_ENV } = require('../../config');
+const { CLIENT_PORT, NODE_ENV } = require('../../config');
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
@@ -22,7 +22,7 @@ const pluginSets = {
       }),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
-        'process.env.PORT': PORT,
+        'process.env.CLIENT_PORT': CLIENT_PORT,
       }),
       new HTMLWebpackPlugin({ template: 'src/index.html', alwaysWriteToDisk: true }),
       new HtmlWebpackHarddiskPlugin(),
@@ -47,7 +47,7 @@ const pluginSets = {
       }),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
-        'process.env.PORT': PORT,
+        'process.env.CLIENT_PORT': CLIENT_PORT,
       }),
       new StatsWriterPlugin({
         filename: 'stats.json', // Default
@@ -86,7 +86,7 @@ const pluginSets = {
       }),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
-        'process.env.PORT': PORT,
+        'process.env.CLIENT_PORT': CLIENT_PORT,
       }),
     ],
     production: [
@@ -99,7 +99,7 @@ const pluginSets = {
       }),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production'),
-        'process.env.PORT': PORT,
+        'process.env.CLIENT_PORT': CLIENT_PORT,
       }),
     ],
   },

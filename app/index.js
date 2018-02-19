@@ -2,7 +2,7 @@ const express = require('express');
 const http = require('http');
 const path = require('path');
 // const spdy = require('spdy');
-const { NODE_ENV, PORT, PRODUCTION_ENV } = require('./config');
+const { NODE_ENV, CLIENT_PORT, PRODUCTION_ENV } = require('./config');
 const morgan = require('morgan');
 const logger = require('./src/lib/logger');
 
@@ -57,4 +57,4 @@ app.use((req, res, next) => {
   res.status(404).send('This page does not exist!');
 });
 
-server.listen(PORT, () => `listening on port: ${PORT}`);
+server.listen(CLIENT_PORT, () => `listening on CLIENT_PORT: ${CLIENT_PORT}`);

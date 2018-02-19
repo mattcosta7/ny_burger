@@ -42,7 +42,7 @@ if (NODE_ENV === PRODUCTION_ENV) {
 }
 
 const logger = new winston.Logger({
-  transports: [ConsoleLogger],
+  transports,
 });
 
 logger.stream = {
