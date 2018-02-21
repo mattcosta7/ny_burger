@@ -4,7 +4,6 @@ const NY_BURGER_BLOG_IG_ID = 5762816323;
 const COUNT = 20;
 
 function transformApiData(data) {
-  console.log('fetched');
   const { page_info, edges } = data.user.edge_owner_to_timeline_media;
   if (!edges || !edges.length) return {};
   const media = edges.map(({ node }) => ({

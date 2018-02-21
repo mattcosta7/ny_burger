@@ -83,7 +83,7 @@ export function register(config) {
   if ('serviceWorker' in window.navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new window.URL('public', window.location);
-    console.log(publicUrl);
+
     if (publicUrl.origin !== window.location.origin) {
       // Our service worker won't work if PUBLIC_URL is on a different origin
       // from what our page is served on. This might happen if a CDN is used to
