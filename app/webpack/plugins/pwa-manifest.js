@@ -10,7 +10,7 @@ module.exports = new WebpackPwaManifest({
   description:
     'Taking on NYC one Burger at a time. With a cast of Burger experts telling you what you need to put in your mouth across the city.',
   background_color: '#ffffff',
-  start_url: 'https://www.nyburgerblog.com/',
+  start_url: 'https://www.nyburgerblog.com/index.html',
   theme_color: '#063861',
   fingerprints: true,
   ios: true,
