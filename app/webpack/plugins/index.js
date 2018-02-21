@@ -3,12 +3,13 @@ const { extractPluginMaker } = require('./extract-text-plugin');
 const uglify = require('./uglify');
 const { StatsWriterPlugin } = require('webpack-stats-plugin');
 const pwaManifest = require('./pwa-manifest');
-const ManifestPlugin = require('webpack-manifest-plugin');
 const { CLIENT_PORT, NODE_ENV } = require('../../config');
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const CssoWebpackPlugin = require('csso-webpack-plugin').default;
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const pluginSets = {
   client: {
@@ -72,6 +73,14 @@ const pluginSets = {
         minify: true,
         navigateFallback: '/index.html',
         staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/],
+      }),
+      new CssoWebpackPlugin(),
+      new CompressionPlugin({
+        asset: '[path].gz[query]',
+        algorithm: 'gzip',
+        test: /\.(js|css|html|svg)$/,
+        threshold: 10240,
+        minRatio: 0.8,
       }),
     ],
   },

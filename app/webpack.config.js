@@ -5,7 +5,8 @@ const rulesMaker = require('./webpack/rules');
 const makePluginSet = require('./webpack/plugins');
 
 const outputPath = path.resolve('./dist');
-const publicPath = '/public/';
+const publicPath =
+  process.env.NODE_ENV !== 'production' ? '/public/' : '//d3fels6wqsoo93.cloudfront.net/';
 const resolve = {
   extensions: ['.js', '.jsx'],
 };
