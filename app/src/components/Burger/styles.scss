@@ -15,8 +15,7 @@
       flex-direction: row;
 
       .thumbnail {
-        height: 50%;
-        width: 50%;
+        flex-basis: 50%;
       }
     }
     &:nth-of-type(even) {
@@ -28,6 +27,7 @@
 
   .description {
     align-self: center;
+    flex-basis: 100%;
     padding: 0.5rem;
     @media screen and (min-width: map-get($screen-sizes, lg)) {
       padding: 2rem;

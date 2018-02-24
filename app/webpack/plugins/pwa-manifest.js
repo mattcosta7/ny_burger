@@ -2,11 +2,10 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 
 module.exports = new WebpackPwaManifest({
-  publicPath:
-    process.env.NODE_ENV === 'production' ? 'https://d3fels6wqsoo93.cloudfront.net/' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? 'https://cdn.nyburgerblog.com/' : '/',
   filename: 'manifest.json',
   name: 'New York Burger Blog',
-  short_name: 'NY Burger Blog',
+  short_name: 'NY Burger',
   description:
     'Taking on NYC one Burger at a time. With a cast of Burger experts telling you what you need to put in your mouth across the city.',
   background_color: '#ffffff',

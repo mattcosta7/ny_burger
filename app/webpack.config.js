@@ -6,7 +6,7 @@ const makePluginSet = require('./webpack/plugins');
 
 const outputPath = path.resolve('./dist');
 const publicPath =
-  process.env.NODE_ENV !== 'production' ? '/public/' : '//d3fels6wqsoo93.cloudfront.net/';
+  process.env.NODE_ENV !== 'production' ? '/public/' : 'https://cdn.nyburgerblog.com/';
 const resolve = {
   extensions: ['.js', '.jsx'],
 };

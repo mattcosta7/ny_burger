@@ -1,9 +1,10 @@
 import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
+import Image from '../../Image';
 import burgerMain from '../../../assets/favicon/android-chrome-144x144.png';
 import Styles from './styles.scss';
 
-const NavItem = ({ to, children, active }) => (
+const NavItem = ({ to, children }) => (
   <li>
     <NavLink to={to}>{children}</NavLink>
   </li>
@@ -15,7 +16,7 @@ function Navigation() {
       <ul className={Styles.navigation}>
         <NavItem to="/">
           <div className={Styles['burger-container']}>
-            <img src={burgerMain} alt="burger" />
+            <Image src={burgerMain} alt="burger" />
           </div>
         </NavItem>
         <NavItem to="/burgers">Burgers</NavItem>

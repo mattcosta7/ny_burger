@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import classnames from 'classnames';
+import Image from '../../components/Image';
 import hotReload from '../../helpers/hotloader-helper';
 import Styles from './styles.scss';
 
@@ -18,7 +19,7 @@ class TeamMember extends React.Component {
             this.props.profilePicture.direction === 'left' && Styles.left
           )}
         >
-          <img
+          <Image
             src={this.props.profilePicture.image}
             alt={`${this.props.firstName} ${this.props.lastName}`}
           />

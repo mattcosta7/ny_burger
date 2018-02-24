@@ -30,10 +30,10 @@ class App extends React.Component {
           <link rel="icon" type="image/png" sizes="16x16" href={`${favicon16}`} />
           <link rel="mask-icon" href={`${safariPinnedTab}`} color="#5bbad5" />
           <link rel="shortcut icon" href={`${favicon}`} />
-          {/* <link rel="manifest" href={}> */}
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="msapplication-config" content={`"${msConfig}"`} />
           <meta name="theme-color" content="#ffffff" />
+          <meta description="Taking on NYC one Burger at a time. With a cast of Burger experts telling you what you need to put in your mouth across the city" />
         </Helmet>
         <Navigation />
         <div>
