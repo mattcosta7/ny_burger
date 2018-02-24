@@ -14,7 +14,7 @@ export default function Burger(props) {
           <Image
             className={Styles.thumbnail}
             src={image}
-            placeholder={thumbnails[0].src}
+            placeholder={thumbnails && thumbnails[0] && thumbnails[0].src}
             alt="burger"
           />
           <p className={Styles.description}>{description}</p>

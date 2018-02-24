@@ -40,30 +40,27 @@ export default stats => (req, res, next) => {
       .join('');
   }
 
-  try {
-    const props = {};
-    return Promise.all([Entry(req.url, props), readFileAsync(templatePath)])
-      .spread((reactComponent, template) => {
-        const result = ReactDOMServer.renderToString(reactComponent);
-        const helmet = Helmet.renderStatic();
-        const helmetAttributes = Object.keys(helmet)
-          .map(h => helmet[h].toString())
-          .join('');
+  const props = {};
+  return Promise.all([Entry(req.url, props), readFileAsync(templatePath)])
+    .spread((reactComponent, template) => {
+      const result = ReactDOMServer.renderToString(reactComponent);
+      const helmet = Helmet.renderStatic();
+      const helmetAttributes = Object.keys(helmet)
+        .map(h => helmet[h].toString())
+        .join('');
 
-        let html = template
-          .toString()
-          .replace('{{result}}', result || '')
-          .replace('{{props}}', JSON.stringify(props))
-          .replace('{{helmetAttributes}}', helmetAttributes || '')
-          .replace('{{helmetScripts}}', helmetScripts || '');
+      let html = template
+        .toString()
+        .replace('{{result}}', result || '')
+        .replace('{{props}}', JSON.stringify(props))
+        .replace('{{helmetAttributes}}', helmetAttributes || '')
+        .replace('{{helmetScripts}}', helmetScripts || '');
 
-        if (process.env.NODE_ENV !== 'production') {
-          html = html.replace('<%=htmlWebpackPlugin.files.webpackManifest%>', '');
-        }
-        return res.send(html);
-      })
-      .catch(err => res.json({ err }));
-  } catch (err) {
-    return res.json({ err });
-  }
+      if (process.env.NODE_ENV !== 'production') {
+        html = html.replace('<%=htmlWebpackPlugin.files.webpackManifest%>', '');
+      }
+      console.log(html);
+      return res.send(html);
+    })
+    .catch(err => res.json({ err }));
 };
