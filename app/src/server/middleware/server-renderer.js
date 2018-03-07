@@ -3,6 +3,7 @@ import fs from 'fs';
 import ReactDOMServer from 'react-dom/server';
 import Helmet from 'react-helmet';
 import Entry from '../../entry/server';
+import logger from '../../lib/logger';
 
 const readFileAsync = Promise.promisify(fs.readFile, { context: fs });
 const templatePath =
@@ -59,8 +60,11 @@ export default stats => (req, res, next) => {
       if (process.env.NODE_ENV !== 'production') {
         html = html.replace('<%=htmlWebpackPlugin.files.webpackManifest%>', '');
       }
-      console.log(html);
+
       return res.send(html);
     })
-    .catch(err => res.json({ err }));
+    .catch((err) => {
+      logger.error(err, { depth: null });
+      res.json({ error: 'Error processing your request' });
+    });
 };

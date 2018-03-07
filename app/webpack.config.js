@@ -36,6 +36,9 @@ const clientConfig = {
   },
   resolve,
   plugins: makePluginSet('client'),
+  node: {
+    fs: 'empty',
+  },
 };
 
 const serverConfig = {

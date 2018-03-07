@@ -14,7 +14,7 @@ import favicon16 from '../../assets/favicon/favicon-16x16.png';
 import safariPinnedTab from '../../assets/favicon/safari-pinned-tab.svg';
 import appleTouchFavicon from '../..//assets/favicon/apple-touch-icon.png';
 import msConfig from '../../assets/favicon/browserconfig.xml';
-
+import Analytics from '../../components/Analytics';
 import Styles from './style.scss';
 
 class App extends React.Component {
@@ -40,6 +40,7 @@ class App extends React.Component {
           <section className={Styles['app-body']}>{renderRoutes(this.props.route.routes)}</section>
           <footer />
         </div>
+        <Analytics />
       </div>
     );
   }
