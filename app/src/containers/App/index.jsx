@@ -15,6 +15,7 @@ import safariPinnedTab from '../../assets/favicon/safari-pinned-tab.svg';
 import appleTouchFavicon from '../..//assets/favicon/apple-touch-icon.png';
 import msConfig from '../../assets/favicon/browserconfig.xml';
 import Analytics from '../../components/Analytics';
+import AdSense from '../../components/AdSense';
 import Styles from './style.scss';
 
 class App extends React.Component {
@@ -41,6 +42,7 @@ class App extends React.Component {
           <footer />
         </div>
         <Analytics />
+        <AdSense />
       </div>
     );
   }
